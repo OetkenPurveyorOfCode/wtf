@@ -34,8 +34,12 @@ void strvec_append_str(Stringvec* svec, char* str) {
     svec->len += 1;
 }
 
-int main(void) {
-    FILE* f = fopen("words_alpha.txt", "r"); // better to read entire file since we need to own strs anyway
+int main(int argc, char**argv) {
+    if (argc != 2) {
+        printf("Invalid argument: Usage: main.exe <filename>");
+        exit(-1);
+    }
+    FILE* f = fopen(argv[1], "r"); // better to read entire file since we need to own strs anyway
     assert(f);
     char buf[4096];
     Stringvec dict[26] = {0};
@@ -55,7 +59,7 @@ int main(void) {
     fprintf(of, "} Entry;\n");
     assert(of);
     for (size_t j = 0; j < sizeof(dict)/sizeof(*dict); j++) {
-        fprintf(of, "static char* words_%c[] = {\n", j +'a');
+        fprintf(of, "static char* words_%c[] = {\n", (char)j +'a');
         for (size_t i = 0; i < dict[j].len; i++) {
             fprintf(of, "     \"%.*s\",\n", (int)dict[j].sv[i].len, dict[j].sv[i].string);
         }
@@ -63,7 +67,7 @@ int main(void) {
     }
     fprintf(of, "Entry words[] = {\n");
     for (size_t j = 0; j < sizeof(dict)/sizeof(*dict); j++) {
-        fprintf(of, "    {words_%c, %zu},\n", j + 'a', dict[j].len);
+        fprintf(of, "    {words_%c, %zu},\n", (char)j + 'a', dict[j].len);
     }
     fprintf(of, "};\n");
     fclose(of);
