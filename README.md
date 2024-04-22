@@ -2,5 +2,10 @@
 
 A joke BSD games inspire acronym explainer that just output just random gibberish.
 
-# Example 
-nsa: nonemotionally splicers arcifera
+# Usage
+
+```bat
+wtf hello
+hello: hybrids edison limitation libraries oklahoma
+```
+(You can see, it sucks)
