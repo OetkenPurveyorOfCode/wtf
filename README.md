@@ -1,6 +1,6 @@
 # WTF
 
-A joke BSD games inspire acronym explainer that just output just random gibberish.
+A joke BSD games inspired acronym explainer that just outputs just random gibberish.
 
 # Usage
 

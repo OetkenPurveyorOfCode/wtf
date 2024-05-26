@@ -6,7 +6,7 @@
 #include "pcg_basic.h"
 #include "pcg_basic.c"
 
-#include "words.h"
+#include "build/words.h"
 
 int main(int argc, char** argv) {
     if (argc != 2) {
@@ -24,5 +24,6 @@ int main(int argc, char** argv) {
             printf("Invalid character %c\n", argv[1][i]);
         }
     }
+    printf("\n");
     return 0;
 }
